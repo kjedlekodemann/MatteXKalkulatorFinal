@@ -6,7 +6,7 @@
 
 int euklid(int a, int b) {
     if (b == 0) return a;
-    return euklid(b, a % b);
+    return abs(euklid(b, a % b));
 }
 
 omvEuklid omvendtEuklid(long long a, long long b) {

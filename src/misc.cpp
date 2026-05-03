@@ -8,10 +8,8 @@ void clearTerminal() {
     std::cout << "\x1B[2J\x1B[H";
 #endif
 }
-
-template <typename T>
-void printVector(const std::vector<T>& v, const std::string& name = "vec") {
-    std::cout << name << " = [ ";
+void printVector(const std::vector<int>& v) {
+    std::cout << " = [ ";
     for (const auto& x : v) {
         std::cout << x << " ";
     }

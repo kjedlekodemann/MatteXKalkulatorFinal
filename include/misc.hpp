@@ -3,5 +3,4 @@
 #include <vector>
 
 void clearTerminal();
-template <typename T>
-void printVector(const std::vector<T>& v, const std::string& name = "vec");
+void printVector(const std::vector<int>& v);

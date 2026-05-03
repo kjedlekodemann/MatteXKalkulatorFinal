@@ -4,7 +4,7 @@
 bool sjekkPrim(int a) {
     if (a<2) {return false;}
     int maksRot = std::floor(sqrt(a));
-    int temp = 0;
+    int temp = 2;
     while (temp<=maksRot) {
         if (a%temp==0) {
             return false;
