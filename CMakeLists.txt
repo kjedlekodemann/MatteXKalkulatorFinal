@@ -4,6 +4,6 @@ project(MatteXCalc)
 
 file(GLOB SRC_FILES src/*.cpp)
 
-add_executable(test ${SRC_FILES})
-
-target_include_directories(test PRIVATE include/)
+add_executable(MatteXKalkulator ${SRC_FILES})
+target_link_libraries(MatteXKalkulator ntdll)
+target_include_directories(MatteXKalkulator PRIVATE include/)

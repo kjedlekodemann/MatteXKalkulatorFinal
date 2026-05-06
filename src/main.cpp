@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <windows.h>
 #include <string>
 #include "primtall.hpp"
 #include "euklid.hpp"
@@ -8,14 +9,6 @@
 #include "misc.hpp"
 #include "geometriskSted.hpp" //includes :DDDD
 using namespace std; //gjør at me ikke må skrive "std::" før funksjoner i std lib  
-
-int main() { //brukt main for testing
-    if (hoved()) {BlueScreen;}
-    return hoved(); //return 1 hvis error 0 ellers. (kjører også hovedfunksjonen)
-}
-
-
-
 
 int hoved() {
     char valg; //bruker en bokstav som valget ditt
@@ -134,10 +127,11 @@ int hoved() {
         cout << "Vil du sjekke en sirkel (1), midtnormal (2) eller Linje (3)?" << endl;
         cin >> type;
         clearTerminal();
+        Pungt a,b,p,m;
+        double ax,ay,bx,by,px,py,mx,my,r;
+        
         switch (type) {
             case 1:
-                Pungt m,p;
-                double mx,my,px,py,r;
                 cout << "M(x)? (midten)" << endl; 
                 cin >> mx;
                 cout << "M(y)? (midten)" << endl; 
@@ -159,8 +153,6 @@ int hoved() {
                     return 0;
                 }
             case 2:
-                Pungt a,b,p;
-                double ax,ay,bx,by,px,py;
                 cout << "A(x)?" << endl; 
                 cin >> ax;
                 cout << "A(y)?" << endl; 
@@ -185,8 +177,6 @@ int hoved() {
                     return 0;
                 }
             case 3:
-                Pungt a,b,p;
-                double ax,ay,bx,by,px,py;
                 cout << "A(x)?" << endl; 
                 cin >> ax;
                 cout << "A(y)?" << endl; 
@@ -214,4 +204,14 @@ int hoved() {
                 BlueScreen();
         }
     }
+    return 1;
 }
+
+int main() { //brukt main for testing
+    if (hoved()) {BlueScreen;}
+    return hoved(); //return 1 hvis error 0 ellers. (kjører også hovedfunksjonen)
+}
+
+
+
+
