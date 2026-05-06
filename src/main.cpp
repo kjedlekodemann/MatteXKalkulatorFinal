@@ -6,39 +6,49 @@
 #include "diofantiskLigningUrgh.hpp"
 #include "kongruens.hpp"
 #include "misc.hpp"
-#include "geometriskSted.hpp"
-using namespace std;
+#include "geometriskSted.hpp" //includes :DDDD
+using namespace std; //gjør at me ikke må skrive "std::" før funksjoner i std lib  
 
-int main() {
-    Pungt a = {2,4};
-    Pungt b = {4,8};
-    cout << "distansen mellom " << a << " og " << b << " er " << a.distanse(b);
-    return 0;
+int main() { //brukt main for testing
+    if (hoved()) {BlueScreen;}
+    return hoved(); //return 1 hvis error 0 ellers. (kjører også hovedfunksjonen)
 }
 
 
 
 
 int hoved() {
-    char valg;
-    cout << "Velg din modus!" << endl << endl << "Primtallssjekk: (P)" << endl << "Primtallsfaktorisering: (F)" << endl << "Euklid Algoritmen: (E)" << endl << "Omvendt Euklid Algoritmen: (O)" << endl << "Diofantisk Ligning: (D)" << endl << "Kongruenssjekk: (K)" << endl << "Kongruens: (S)" << endl << endl;
-    cin >> valg;
-    valg = toupper(valg); 
-    if (std::cin.fail() || (valg!=toupper('k')&&valg!=toupper('s')&&valg!=toupper('p')&&valg!=toupper('f')&&valg!=toupper('e')&&valg!=toupper('o')&&valg!=toupper('d'))) {
-        throw std::runtime_error("Input Fail");
-    } else if (valg==toupper('p')) {
-        clearTerminal();
-        int a;
+    char valg; //bruker en bokstav som valget ditt
+    cout << "Velg din modus!" 
+    << endl << endl << 
+    "Primtallssjekk: (P)" << endl << 
+    "Primtallsfaktorisering: (F)" << endl << 
+    "Euklid Algoritmen: (E)" << endl << 
+    "Omvendt Euklid Algoritmen: (O)" << endl << 
+    "Diofantisk Ligning: (D)" << endl << 
+    "Kongruenssjekk: (K)" << endl << 
+    "Kongruens: (S)" << endl << endl; //LAAAAAAAAAANG print
+    cin >> valg; //input
+    valg = toupper(valg); //valg uppercase 
+    if (std::cin.fail() || (valg!=toupper('k')
+    &&valg!=toupper('s')&&valg!=toupper('p')
+    &&valg!=toupper('f')&&valg!=toupper('e')
+    &&valg!=toupper('o')&&valg!=toupper('d')&&
+    valg!=toupper('g'))) { //stor if statement, sjekker om ingenting er ødelagt (feil med input statement)
+        BlueScreen(); //error hvis det er tilfellet
+    } else if (valg==toupper('p')) { //hvis valgt P (etc)
+        clearTerminal(); //gjør bare terminalen tom tom sahur
+        int a; //definerer variabel som brukes
         cout << endl << "Skriv inn ett tall: " << endl;
-        cin >> a;
+        cin >> a; //input
         if (sjekkPrim(a)) {
             cout << "Ja, " << a << " er et primtall." << endl;
             return 0;
         } else {
             cout << "Nei, " << a << " er ikke ett primtall." << endl;
             return 0;
-        }
-    } else if (valg==toupper('f')) {
+        } //basic logikk
+    } else if (valg==toupper('f')) { //det meste fra if toupper(p) gjenbrukes
         clearTerminal();
         int a;
         cout << endl << "Skriv inn ett tall: " << endl;
@@ -110,6 +120,7 @@ int hoved() {
         }
         return 0;
     } else if (valg==toupper('s')) {
+        clearTerminal();
         int a,mod;
         cout << endl << "Skriv inn tallet: " << endl;
         cin >> a;
@@ -117,5 +128,90 @@ int hoved() {
         cin >> mod;
         int r = kongruens(a,mod);
         cout << a << " ≡ " << r << " (mod " << mod << ')' << endl;
+    } else if (valg==toupper('g')) {
+        clearTerminal();
+        short type;
+        cout << "Vil du sjekke en sirkel (1), midtnormal (2) eller Linje (3)?" << endl;
+        cin >> type;
+        clearTerminal();
+        switch (type) {
+            case 1:
+                Pungt m,p;
+                double mx,my,px,py,r;
+                cout << "M(x)? (midten)" << endl; 
+                cin >> mx;
+                cout << "M(y)? (midten)" << endl; 
+                cin >> my;
+                cout << "P(x)?" << endl; 
+                cin >> px;
+                cout << "P(y)?" << endl; 
+                cin >> py;
+                cout << "Radius?" << endl;
+                cin >> r; 
+                clearTerminal();
+                m = {mx,my};
+                p = {px,py};
+                if (erPaaSirkel(p,m,r)) {
+                    cout << "Ja, Punktet P(" << px << ", " << py << ") er i det geometriske stedet for Punktet M(" << mx << ", " << my << ") med radiusen " << r << endl;
+                    return 0;
+                } else {
+                    cout << "Nei, Punktet P(" << px << ", " << py << ") er ikke i det geometriske stedet for Punktet M(" << mx << ", " << my << ") med radiusen " << r << endl;
+                    return 0;
+                }
+            case 2:
+                Pungt a,b,p;
+                double ax,ay,bx,by,px,py;
+                cout << "A(x)?" << endl; 
+                cin >> ax;
+                cout << "A(y)?" << endl; 
+                cin >> ay;
+                cout << "B(x)?" << endl; 
+                cin >> bx;
+                cout << "B(y)?" << endl; 
+                cin >> by;
+                cout << "P(x)?" << endl; 
+                cin >> px;
+                cout << "P(y)?" << endl; 
+                cin >> py;
+                clearTerminal();
+                a = {ax,ay};
+                b = {bx,by};
+                p = {px,py};
+                if (erPaaMidtnormal(p,a,b)) {
+                    cout << "Ja, Punktet P(" << px << ", " << py << ") er i det geometriske stedet mellom A(" << ax << ", " << ay << ") og B(" << bx << ", " << by << ")." << endl;
+                    return 0;
+                } else {
+                    cout << "Nei, Punktet P(" << px << ", " << py << ") er ikke det geometriske stedet mellom A(" << ax << ", " << ay << ") og B(" << bx << ", " << by << ")." << endl;
+                    return 0;
+                }
+            case 3:
+                Pungt a,b,p;
+                double ax,ay,bx,by,px,py;
+                cout << "A(x)?" << endl; 
+                cin >> ax;
+                cout << "A(y)?" << endl; 
+                cin >> ay;
+                cout << "B(x)?" << endl; 
+                cin >> bx;
+                cout << "B(y)?" << endl; 
+                cin >> by;
+                cout << "P(x)?" << endl; 
+                cin >> px;
+                cout << "P(y)?" << endl; 
+                cin >> py;
+                clearTerminal();
+                a = {ax,ay};
+                b = {bx,by};
+                p = {px,py};
+                if (erPaaLinje(a,b,p)) {
+                    cout << "Ja, Punktet P(" << px << ", " << py << ") er i det geometriske stedet mellom A(" << ax << ", " << ay << ") og B(" << bx << ", " << by << ")." << endl;
+                    return 0;
+                } else {
+                    cout << "Nei, Punktet P(" << px << ", " << py << ") er ikke det geometriske stedet mellom A(" << ax << ", " << ay << ") og B(" << bx << ", " << by << ")." << endl;
+                    return 0;
+                }
+            default:
+                BlueScreen();
+        }
     }
 }
