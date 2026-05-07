@@ -208,7 +208,7 @@ int hoved() {
 }
 
 int main() { //brukt main for testing
-    if (hoved()) {BlueScreen;}
+    if (hoved()) {BlueScreen();}
     return hoved(); //return 1 hvis error 0 ellers. (kjører også hovedfunksjonen)
 }
 
