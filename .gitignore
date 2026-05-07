@@ -1,0 +1,27 @@
+# Build folder
+/build/
+/cmake-build-*/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build.bat
+
+# Executables
+*.exe
+*.out
+test
+
+# Object files
+*.o
+*.obj
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
