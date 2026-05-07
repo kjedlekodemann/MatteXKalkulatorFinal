@@ -1,27 +1,28 @@
 # 🧮 MatteXKalkulator
 
-Et C++-prosjekt laget for å utforske og implementere sentrale konsepter fra **Matematikk X (MAT02‑02)**.
+Et C++-prosjekt laget for å **få karakter** fra **Matematikk X (MAT02‑02)**.
 
 Prosjektet startet som et enkelt tallteori-verktøy og utviklet seg gradvis til et større matematisk toolkit med:
 
-- Primtall
+- Primtall (og faktorisering)
 - Euklids algoritme
 - Omvendt Euklids algoritme
 - Diofantiske ligninger
 - Kongruensregning
 - Grunnleggende koordinatgeometri
+- Sug meg, bitch boy
 
 ---
 
 # ✨ Features
 
 ## 🔢 Primtallssjekk
-Sjekker om et tall er et primtall.
+Sjekker om et tall er et primtall. (LETS GOOOOOOO)
 
 ### Eksempel
 ```text
 Input: 17
-Output: Ja, 17 er et primtall.
+Output: Ja, 17 er et primtall. //WHAAAAAAAAAAAAT
 ```
 
 ---
